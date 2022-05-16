@@ -137,10 +137,6 @@ elements.newCustomElements(
         name: 'form-label',
         classes: ['form-label', 'ms-2', 'me-2'],
     },
-    {
-        name: 'fa-calendar',
-        classes: ['fa', 'fa-calendar', 'iconui-button'],
-    },
     $.extend(true, {
         name: 'btn-dismiss'
     }, dismissButtonTagDef),
@@ -481,7 +477,7 @@ function UiDatetimeWidget() {
             .wrap('<div class="input-group"></div>');
             $dateControl.after(
                 '<div class="input-group-append pointer" data-target="#' + targetId + '" data-toggle="datetimepicker">' +
-                '<div class="input-group-text"><fa-calendar></fa-calendar></div>' +
+                '<div class="input-group-text"><span class="fa fa-calendar iconui-button"></span></div>' +
                 '</div>'
             );
         });
