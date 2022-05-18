@@ -310,10 +310,12 @@ function UiPopover($elem) {
                 throw new Error("Only single element jQuery collection is supported");
             }
             this.elem = $elem.get(0);
-        } else {
+        } else if ($elem instanceof HTMLElement) {
             this.elem = $elem;
+        } else {
+            this.elem = null;
         }
-        this.popover = bootstrap.Popover.getInstance(this.elem);
+        this.popover = (this.elem) ? bootstrap.Popover.getInstance(this.elem) : null;
     };
 
     UiPopover.isHTML = function(options) {
@@ -372,6 +374,15 @@ function UiPopover($elem) {
         this.propCall('popover.show');
     };
 
+    UiPopover.close = function() {
+        var evt = $(this.elem).data('trigger');
+        if (evt !== undefined) {
+            $(this.elem).trigger(evt);
+        } else {
+            this.hide();
+        }
+    };
+
     UiPopover.state = function(state) {
         switch (state) {
         case 'show':
@@ -389,14 +400,61 @@ function UiPopover($elem) {
         this.propCall('popover.dispose');
     };
 
+    // Find associated input by [data-popover].
+    UiPopover.getRelatedInput = function() {
+        $('[name="' + CSS.escape($(this.elem).data('popover')) + ']"')
+    };
+
     // check out
     UiPopover.empty = function() {
-        var $tip = propGet($(this.elem).data('bs.popover'), '$tip');
-        if ($tip !== undefined) {
-            var $content = $tip.find('.popover-content');
+        var $tip = this.getTip();
+        if ($tip.length > 0) {
+            var $content = $tip.find('.popover-body');
             initClient($content, 'dispose');
-            $tip.find('.popover-content').empty();
+            $tip.find('.popover-body').empty();
         }
+    };
+
+    /**
+     * Change properties of Bootstrap popover.
+     */
+    UiPopover.change = function(opts) {
+        if (this.popover) {
+            for (var opt in opts) {
+                if (opts.hasOwnProperty(opt)) {
+                    this.popover._config[opt] = opts[opt];
+                }
+            }
+        }
+    };
+
+    /**
+     * Bootstrap popover notification.
+     * Changes properties of Bootstrap popover, show popover and move window scrollpos to related location hash.
+     */
+    UiPopover.update = function(opts) {
+        this.change(opts);
+        this.show();
+        window.location.hash = '#' + $(this.elem).prop('name');
+    };
+
+    /**
+     * Get tip DOM element for selected popover.
+     */
+    UiPopover.getTip = function() {
+        var result = [];
+        var data = $(this.elem).data();
+        var tip = $.id(
+            $(this.elem).attr('aria-describedby')
+        );
+        if (tip.length > 0) {
+            result.push(tip.get(0));
+        }
+        return $(result);
+    };
+
+    UiPopover.isVisible = function() {
+        return this.getTip().filter('.show').length > 0;
     };
 
 }(UiPopover.prototype);
