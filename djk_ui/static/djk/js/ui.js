@@ -402,7 +402,7 @@ function UiPopover($elem) {
 
     // Find associated input by [data-popover].
     UiPopover.getRelatedInput = function() {
-        $('[name="' + CSS.escape($(this.elem).data('popover')) + ']"')
+        return $('[name="' + CSS.escape($(this.elem).data('popover')) + ']"');
     };
 
     // check out
