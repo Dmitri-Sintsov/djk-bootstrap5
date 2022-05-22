@@ -12,37 +12,28 @@ var blockTags = {
     list: [
         {
             enclosureTag: '<ul>',
-            // enclosureClasses: 'list-group',
             enclosureClasses: 'list-group',
             itemTag: '<li>',
-            // itemClasses: 'condensed list-group-item preformatted',
             itemClasses: 'condensed list-group-item preformatted',
             localKeyTag: '<div>',
-            // localKeyClasses: 'label label-info label-gray preformatted br-after',
             localKeyClasses: 'badge bg-light text-primary text-start preformatted',
         },
         {
             enclosureTag: '<ul>',
-            // enclosureClasses: 'list-group',
             enclosureClasses: 'list-group',
             itemTag: '<li>',
-            // itemClasses: 'condensed list-group-item list-group-item-warning preformatted',
             itemClasses: 'condensed list-group-item text-secondary preformatted',
             localKeyTag: '<div>',
-            // localKeyClasses: 'label label-info label-gray preformatted br-after',
             localKeyClasses: 'badge bg-light text-secondary preformatted',
         },
     ],
     badges: [
         {
             enclosureTag: '<div>',
-            // enclosureClasses: 'well well-condensed well-sm',
             enclosureClasses: 'border bg-light p-1 m-1',
             itemTag: '<span>',
-            // itemClasses: 'badge preformatted',
             itemClasses: 'badge bg-info fs-6 p-1 m-1 text-start preformatted',
             localKeyTag: '<div>',
-            // localKeyClasses: 'label label-info label-white preformatted',
             localKeyClasses: 'badge bg-secondary fs-6 mr-1 preformatted',
         }
     ]
@@ -109,13 +100,9 @@ var dismissButtonTagDef = {
     ancestor: HTMLButtonElement,
     extendsTagName: 'button',
     classes: ['btn-close'],
-    styles: {
-        // 'text-decoration': 'none',
-    },
     attrs: {
             'aria-label': 'Close',
     }
-    // innerText: 'x',
 };
 
 elements.newCustomElements(
@@ -130,7 +117,15 @@ elements.newCustomElements(
         }
     },
     {
+        ancestor: HTMLDivElement,
+        name: 'form-row',
+        extendsTagName: 'div',
+        classes: ['row', 'input-group', 'mb-2'],
+    },
+    {
+        ancestor: HTMLDivElement,
         name: 'form-group',
+        extendsTagName: 'div',
         classes: ['input-group', 'mb-2'],
     },
     {
