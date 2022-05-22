@@ -352,11 +352,9 @@ function UiPopover($elem) {
         this.popover = new bootstrap.Popover(this.elem, options);
     };
 
-    // Unused
     UiPopover.setContent = function($content) {
         if (this.popover) {
             this.popover._config.content = $content.prop('outerHTML');
-            // _popover.data("bs.popover").options.content = $errmsg;
             this.popover.setContent();
         }
     };
