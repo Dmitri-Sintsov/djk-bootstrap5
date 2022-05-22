@@ -110,11 +110,11 @@ elements.newCustomElements(
         name: 'form-inline',
         ancestor: HTMLFormElement,
         extendsTagName: 'form',
-        styles: {
-            'display': 'inline-block',
-            'width': 'auto',
-            'vertical-align': 'middle',
-        }
+        styles: [
+            {'display': 'inline-block'},
+            {'width': 'auto'},
+            {'vertical-align': 'middle'},
+        ]
     },
     {
         ancestor: HTMLDivElement,
