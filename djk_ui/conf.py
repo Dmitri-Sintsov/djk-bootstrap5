@@ -4,7 +4,7 @@ LAYOUT_CLASSES = {
         'field': 'col-md-7',
     },
     'display': {
-        'label': 'w-25 table-light',
-        'field': 'w-100 table-default',
+        'label': 'w-25 table-info',
+        'field': 'w-100 table-light',
     },
 }
