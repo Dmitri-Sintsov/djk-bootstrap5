@@ -287,6 +287,10 @@
 	scroll-behavior: auto;
 }
 
+a.iconui-ctrl-before {
+	text-decoration: none !important;
+}
+
 a.sort-asc:before {
 	content: "\f176";
 	padding-right: 0.5rem;
