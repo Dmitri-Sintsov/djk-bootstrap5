@@ -2,7 +2,7 @@
 
 
 ==============
-djk-bootstrap4
+djk-bootstrap5
 ==============
 
 .. _django-jinja-knockout: https://github.com/Dmitri-Sintsov/django-jinja-knockout
